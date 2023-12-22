@@ -10,6 +10,7 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/components/tabs.js',
     './node_modules/@nextui-org/theme/dist/components/card.js',
     './node_modules/@nextui-org/theme/dist/components/table.js',
+    './node_modules/@nextui-org/theme/dist/components/breadcrumbs.js',
   ],
   theme: {
     extend: {

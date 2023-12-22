@@ -1,3 +1,4 @@
+import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 import { Search } from '@/components/Search/Search'
 import { NavigationTabs } from '@/components/NavigationTabs/NavigationTabs'
 import { TableSimple } from '@/components/TableSimple/TableSimple'
@@ -63,11 +64,55 @@ export default function Home() {
       label: "STATUS",
     },
   ]; 
+  const items = [
+    { 
+      id: 1,
+      href: '/', 
+      label: 'Home' 
+    },
+    { 
+      id: 2,
+      href: '/music', 
+      label: 'Music' 
+    },
+    { 
+      id: 3,
+      href: '/artist', 
+      label: 'Artist' 
+    },
+    { 
+      id: 4,
+      href: '/album', 
+      label: 'Album' 
+    },
+    { 
+      id: 5,
+      href: '/song', 
+      label: 'Song' 
+    },
+    { 
+      id: 6,
+      href: '/genre', 
+      label: 'Genre' 
+    },
+    { 
+      id: 7,
+      href: '/playlist', 
+      label: 'Playlist'
+    },
+    { 
+      id: 8,
+      href: '/search', 
+      label: 'Search'
+    },
+  ]
+
   return (
     <main className="grid gap-10 p-4">
       <Search placeholder='Types of potatoes' label='Search'/>
       <NavigationTabs tabs={ tabs } />
       <TableSimple rows={ rows } columns={ columns }/>
+      <Breadcrumbs breadcrumbs={ items } />
     </main>
   )
 }
