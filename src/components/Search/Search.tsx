@@ -4,6 +4,7 @@ import { Input } from '@nextui-org/input';
 import { SearchIcon } from './SearchIcon'
 import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import { useState } from 'react'
+import { useDebouncedCallback } from 'use-debounce';
 
 export const Search = ({
     label,
@@ -20,19 +21,21 @@ export const Search = ({
     const pathName = usePathname()
     const { replace } = useRouter()
     const [searchValue, setSearchValue] = useState(searchParams.get('search') || '');
-    
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const params = new URLSearchParams(searchParams)
-        const value = e.target.value
-        setSearchValue(value)
+    const WAIT_BETWEEN_CHANGE = 200
 
+    const handleSearchParams = useDebouncedCallback((value: string) => {
+        const params = new URLSearchParams(searchParams)
         if (value) {
             params.set('search', value)
         } else {
             params.delete('search')
         }
-
         replace(`${pathName}?${params.toString()}`)
+    }, WAIT_BETWEEN_CHANGE)
+    
+    const handleChange = (value: string) => {
+        setSearchValue(value)
+        handleSearchParams(value)
     }
 
     const handleClear = () => {
@@ -72,7 +75,7 @@ export const Search = ({
                 value={ searchValue }
                 onClear={ handleClear }
                 radius={ radius }
-                onChange={ handleChange }
+                onChange={ e => handleChange(e.target.value) }
                 defaultValue={ searchParams.get('search') || '' }
                 classNames={ styles }
                 placeholder={ placeholder }
