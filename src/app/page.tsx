@@ -1,5 +1,6 @@
 import { Search } from '@/components/Search/Search'
 import { NavigationTabs } from '@/components/NavigationTabs/NavigationTabs'
+import { TableSimple } from '@/components/TableSimple/TableSimple'
 
 export default function Home() {
 
@@ -21,10 +22,52 @@ export default function Home() {
     }
   ];
 
+  const rows = [
+    {
+      key: "1",
+      name: "Tony Reichert",
+      role: "CEO",
+      status: "Active",
+    },
+    {
+      key: "2",
+      name: "Zoey Lang",
+      role: "Technical Lead",
+      status: "Paused",
+    },
+    {
+      key: "3",
+      name: "Jane Fisher",
+      role: "Senior Developer",
+      status: "Active",
+    },
+    {
+      key: "4",
+      name: "William Howard",
+      role: "Community Manager",
+      status: "Vacation",
+    },
+  ];
+  
+  const columns = [
+    {
+      key: "name",
+      label: "NAME",
+    },
+    {
+      key: "role",
+      label: "ROLE",
+    },
+    {
+      key: "status",
+      label: "STATUS",
+    },
+  ]; 
   return (
     <main className="grid gap-10 p-4">
       <Search placeholder='Types of potatoes' label='Search'/>
       <NavigationTabs tabs={ tabs } />
+      <TableSimple rows={ rows } columns={ columns }/>
     </main>
   )
 }

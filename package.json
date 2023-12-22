@@ -13,6 +13,7 @@
     "@nextui-org/input": "^2.1.16",
     "@nextui-org/system": "^2.0.15",
     "@nextui-org/tabs": "^2.0.26",
+    "@nextui-org/table": "^2.0.28",
     "@nextui-org/theme": "^2.1.17",
     "framer-motion": "^10.16.16",
     "next": "14.0.4",
