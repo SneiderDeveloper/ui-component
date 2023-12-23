@@ -7,15 +7,25 @@ import { useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce';
 
 export const Search = ({
-    label,
-    placeholder,
+    label='Search',
+    placeholder='Types of search',
     width='340px',
     radius='lg',
+    bg='bg-default-200/50',
+    darkBg='bg-default/60',
+    hover='bg-default-200/70',
+    darkHover='bg-default/70',
+    style,
 }: {
     label?: string
     placeholder?: string;
     width?: string;
     radius?: 'none' | 'sm' | 'md' | 'lg' | 'full' | undefined;
+    bg?: string;
+    style?: { label: string; input: string[]; innerWrapper: string; inputWrapper: string[];  };
+    darkBg?: string;
+    hover?: string;
+    darkHover?: string;
 }) => {
     const searchParams = useSearchParams()
     const pathName = usePathname()
@@ -45,25 +55,27 @@ export const Search = ({
         setSearchValue('')
     }
 
-    const styles = {
-        label: 'text-black/50 dark:text-white/90',
+    const stylesDefault = {
+        label: style?.label || 'text-black/50 dark:text-white/90',
         input: [
             'bg-transparent',
             'text-black/90 dark:text-white/90',
             'placeholder:text-default-700/50 dark:placeholder:text-white/60',
+            ...style?.input || [],
         ],
-        innerWrapper: 'bg-transparent',
+        innerWrapper: style?.innerWrapper || 'bg-transparent',
         inputWrapper: [
             'shadow-xl',
-            'bg-default-200/50',
-            'dark:bg-default/60',
+            bg,
+            `dark:${darkBg}`,
             'backdrop-blur-xl',
             'backdrop-saturate-200',
-            'hover:bg-default-200/70',
-            'dark:hover:bg-default/70',
+            `hover:${hover}`,
+            `dark:hover:${darkHover}`,
             'group-data-[focused=true]:bg-default-200/50',
             'dark:group-data-[focused=true]:bg-default/60',
             '!cursor-text',
+            ...style?.inputWrapper || [],
         ],
     }
 
@@ -77,7 +89,7 @@ export const Search = ({
                 radius={ radius }
                 onChange={ e => handleChange(e.target.value) }
                 defaultValue={ searchParams.get('search') || '' }
-                classNames={ styles }
+                classNames={ stylesDefault }
                 placeholder={ placeholder }
                 startContent={
                     <SearchIcon 
