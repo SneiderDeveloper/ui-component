@@ -10,7 +10,7 @@ import { FC } from "react";
 interface Item {
   key: string;
   label: string;
-  url: string;
+  href?: string;
 
 }
 const commonStyle: React.CSSProperties = {
@@ -31,9 +31,9 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items}) => {
   }
   const linkStyle: React.CSSProperties = {
     ...commonStyle,
-    border: '1px solid #ccc', 
     padding: '8px 12px',    
-    borderRadius: '10px',     
+    borderRadius: '10px',
+    color: 'white'     
   };
   return (
     <DropdownContainer>
@@ -48,7 +48,7 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items}) => {
         {(item) => (
           <DropdownItem
           key={item.key}
-          onClick={() => handleItemClick(item.url)}
+          onClick={() => handleItemClick(item.href)}
           >
             {item.label}
           </DropdownItem>

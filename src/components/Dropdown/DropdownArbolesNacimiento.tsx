@@ -6,7 +6,7 @@ import { Dropdown } from "./Dropdown"
 interface Item {
     key: string;
     label: string;
-    url: string;
+    href?: string;
 }
 
 export const DropdownArbolesNacimiento: FC = () => {
@@ -14,17 +14,17 @@ export const DropdownArbolesNacimiento: FC = () => {
     {
       key: "conservadores",
       label: "Árboles conservadores de Agua",
-      url: "https://www.bosquesdecolombia.com/es/arboles-conservadores-de-agua"
+      href: "https://www.bosquesdecolombia.com/es/arboles-conservadores-de-agua"
     },
     {
       key: "semillas",
       label: "Semilla Forestales y Frutales",
-      url: "https://www.bosquesdecolombia.com/es/semillas-forestales-y-frutales"
+      href: "https://www.bosquesdecolombia.com/es/semillas-forestales-y-frutales"
     },
     {
       key: "hidroretenedores",
       label: "Hidroretenedores de Agua",
-      url: "https://www.bosquesdecolombia.com/es/hidroretenedores-de-agua"
+      href: "https://www.bosquesdecolombia.com/es/hidroretenedores-de-agua"
     }
     
   ];

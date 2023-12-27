@@ -6,7 +6,7 @@ import { Dropdown } from "./Dropdown"
 interface Item {
     key: string;
     label: string;
-    url: string;
+    href: string;
 }
 
 export const DropdownQuienes: FC = () => {
@@ -19,17 +19,17 @@ export const DropdownQuienes: FC = () => {
     {
       key: "vision",
       label: "Visión",
-      url: "https://www.bosquesdecolombia.com/es/quienes-somos/vision"
+      href: "https://www.bosquesdecolombia.com/es/quienes-somos/vision"
     },
     {
       key: "objetivos",
       label: "Objetivos",
-      url: "https://www.bosquesdecolombia.com/es/quienes-somos/objetivos"
+      href: "https://www.bosquesdecolombia.com/es/quienes-somos/objetivos"
     },
     {
       key: "interes",
       label: "Sitios de Interés",
-      url: "https://www.bosquesdecolombia.com/es/sitios-de-interes"
+      href: "https://www.bosquesdecolombia.com/es/sitios-de-interes"
     }
   ];
 
