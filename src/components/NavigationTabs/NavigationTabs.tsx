@@ -3,6 +3,26 @@
 import { Tabs, Tab } from '@nextui-org/tabs';
 import { Card, CardBody } from '@nextui-org/card'
 
+interface PropsTab {
+    id: string
+    label: string
+    content: string
+    href?: string
+}
+interface Props {
+    tabs: PropsTab[];
+    isDisabled?: boolean;
+    disabledKeys?: Array<string | number>;
+    size?: 'sm' | 'md' | 'lg';
+    radius?: 'full' | 'lg' | 'md' | 'sm' | 'none';
+    color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+    variant?: 'solid' | 'underlined' | 'bordered' | 'light';
+    // No probado
+    fullWidth?: boolean;
+    defaultSelectedKey?: string | number;
+    disableAnimation?: boolean;
+}
+
 export const NavigationTabs = ({
     tabs=[],
     isDisabled,
@@ -15,24 +35,7 @@ export const NavigationTabs = ({
     fullWidth,
     defaultSelectedKey,
     disableAnimation,
-}: {
-    tabs: Array<{
-        id: string
-        label: string
-        content: string
-        href?: string
-    }>;
-    isDisabled?: boolean;
-    disabledKeys?: Array<string | number>;
-    size?: 'sm' | 'md' | 'lg';
-    radius?: 'full' | 'lg' | 'md' | 'sm' | 'none';
-    color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
-    variant?: 'solid' | 'underlined' | 'bordered' | 'light';
-    // No probado
-    fullWidth?: boolean;
-    defaultSelectedKey?: string | number;
-    disableAnimation?: boolean;
-}) => {
+}: Props) => {
     return (
         <div className='flex w-full flex-col'>
         <Tabs 
