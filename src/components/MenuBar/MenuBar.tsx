@@ -1,6 +1,7 @@
 'use client'
 
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Button } from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/navbar";
+import { Button } from "@nextui-org/button";
 import { DropdownQuienes } from "../Dropdown/DropdownQuienes";
 import { DropdownArboles } from "../Dropdown/DropdownArboles";
 import { DropdownArbolesNacimiento } from "../Dropdown/DropdownArbolesNacimiento";
