@@ -1,11 +1,45 @@
 'use client'
 
+import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
 import { DropdownQuienes } from "../Dropdown/DropdownQuienes";
 import { DropdownArboles } from "../Dropdown/DropdownArboles";
 import { DropdownArbolesNacimiento } from "../Dropdown/DropdownArbolesNacimiento";
+import {Dropdown} from "@/components/Dropdown/Dropdown";
 
+const itemsNavbar = [
+  {
+    label: 'Inicio',
+    url: '/'
+  },
+  {
+    label: 'Árboles',
+    url: '/arbol',
+    children: [
+      {
+        key: "maderables",
+        label: "Árboles Maderables",
+        url: "https://www.bosquesdecolombia.com/es/arboles-maderables"
+      },
+      {
+        key: "maderablesTemplado",
+        label: "Árboles Maderables Templado",
+        url: "https://www.bosquesdecolombia.com/es/arboles-maderables-templado"
+      },
+      {
+        key: "ornamentales",
+        label: "Árboles Ornamentales",
+        url: "https://www.bosquesdecolombia.com/assets/media/slider2.jpg"
+      },
+      {
+        key: "frutales",
+        label: "Árboles Frutales",
+        url: "https://www.bosquesdecolombia.com/es/arboles-frutales-templado"
+      }
+    ]
+  }
+]
 
 export const MenuBar = () => {
 
@@ -29,34 +63,26 @@ export const MenuBar = () => {
         </NavbarBrand> 
         <NavbarContent className="hidden sm:flex gap-3">
           <NavbarItem>
-            <Button style={linkStyle} 
-            onClick={() => window.location.href="#"}
-            >
-              Inicio
-            </Button>
-          </NavbarItem>
-          <NavbarItem>
-            <DropdownQuienes/>
-          </NavbarItem>
-          <NavbarItem>
-            <Button style={linkStyle}
-            onClick={() => window.location.href="#"}
-            >
-              Bancos de Proteina
-            </Button>
-          </NavbarItem>
-          <NavbarItem>
-           <DropdownArboles />
-          </NavbarItem>
-          <NavbarItem>
-            <DropdownArbolesNacimiento />
-          </NavbarItem>
-          <NavbarItem>
-            <Button style={linkStyle} 
-            onClick={() => window.location.href="#"}
-            >
-              Contacto
-            </Button>
+            {
+              itemsNavbar.map(item => (
+                  <React.Fragment key={item.url}>
+                    {
+                      !item.children ? (
+                          <Button style={linkStyle}
+                                  onClick={() => window.location.href="#"}
+                          >
+                            {item.label}
+                          </Button>
+                      ) : (
+                          <Dropdown buttonTitle={item.label} items={item.children} />
+                      )
+                    }
+
+                  </React.Fragment>
+
+              ))
+            }
+
           </NavbarItem>
         </NavbarContent>
       </NavbarContent>
