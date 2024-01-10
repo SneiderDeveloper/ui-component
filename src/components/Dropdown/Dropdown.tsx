@@ -2,7 +2,9 @@
 
 import { Dropdown as DropdownContainer, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
+
 import { FC } from "react";
+import { ChevronDown } from "./icons";
 
 
 
@@ -35,10 +37,16 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items}) => {
     borderRadius: '10px',
     color: 'white'     
   };
+
+  const icons = {
+    chevron: <ChevronDown fill="currentColor" size={16} />,
+  }
   return (
     <DropdownContainer>
       <DropdownTrigger>
-        <Button style={linkStyle}
+        <Button 
+        style={linkStyle}
+        endContent={icons.chevron}
           
         >
           {buttonTitle} 
