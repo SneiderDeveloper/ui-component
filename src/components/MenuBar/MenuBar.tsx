@@ -3,39 +3,36 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
-import { DropdownQuienes } from "../Dropdown/DropdownQuienes";
-import { DropdownArboles } from "../Dropdown/DropdownArboles";
-import { DropdownArbolesNacimiento } from "../Dropdown/DropdownArbolesNacimiento";
 import {Dropdown} from "@/components/Dropdown/Dropdown";
 
 const itemsNavbar = [
   {
     label: 'Inicio',
-    url: '/'
+    href: '/'
   },
   {
-    label: 'Árboles',
-    url: '/arbol',
+    label: 'Dropdown1',
+    href: '/arbol',
     children: [
       {
-        key: "maderables",
-        label: "Árboles Maderables",
-        url: "https://www.bosquesdecolombia.com/es/arboles-maderables"
+        key: "label1",
+        label: "item1",
+        href: "#"
       },
       {
-        key: "maderablesTemplado",
-        label: "Árboles Maderables Templado",
-        url: "https://www.bosquesdecolombia.com/es/arboles-maderables-templado"
+        key: "label2",
+        label: "item2",
+        href: "#"
       },
       {
-        key: "ornamentales",
-        label: "Árboles Ornamentales",
-        url: "https://www.bosquesdecolombia.com/assets/media/slider2.jpg"
+        key: "label3",
+        label: "item3",
+        href: "#"
       },
       {
-        key: "frutales",
-        label: "Árboles Frutales",
-        url: "https://www.bosquesdecolombia.com/es/arboles-frutales-templado"
+        key: "label4",
+        label: "item4",
+        href: "#"
       }
     ]
   }
@@ -65,7 +62,7 @@ export const MenuBar = () => {
           <NavbarItem>
             {
               itemsNavbar.map(item => (
-                  <React.Fragment key={item.url}>
+                  <React.Fragment key={item.href}>
                     {
                       !item.children ? (
                           <Button style={linkStyle}
