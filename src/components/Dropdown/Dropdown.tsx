@@ -5,9 +5,10 @@ import { Button } from "@nextui-org/button";
 import { FC, useState } from "react";
 import { ChevronDown } from "./Icons.tsx";
 
+
 interface Item {
-  key: string;
-  label: string;
+  key?: string;
+  label?: string;
   href?: string;
 
 }
@@ -25,7 +26,8 @@ interface DropdownProps {
 
 export const Dropdown: FC<DropdownProps> = ({buttonTitle, items}) => {
   const [isOpen, setIsOpen] = useState(false);
-  
+  const [bgColor, setBgColor] = useState("white");
+
   const handleItemClick = (href: string) => {
     window.location.href = href;
     setIsOpen(false);
@@ -39,7 +41,7 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items}) => {
     ...commonStyle,
     padding: '8px 12px',    
     borderRadius: '10px',
-    color: 'white'     
+    color: 'white',     
   };
 
   const icons = {

@@ -1,5 +1,6 @@
 import { Search } from '@/components/Search/Search'
 import { MenuBar } from '@/components/MenuBar/MenuBar'
+import { Dropdown } from '@nextui-org/dropdown'
 
 
 export default function Home() {
