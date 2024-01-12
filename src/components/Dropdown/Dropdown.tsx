@@ -13,7 +13,7 @@ interface Item {
 
 }
 const commonStyle: React.CSSProperties = {
-  fontSize: '18px', 
+  fontSize: '20px', 
   fontFamily: 'Arial, sans-serif', 
   
 };
