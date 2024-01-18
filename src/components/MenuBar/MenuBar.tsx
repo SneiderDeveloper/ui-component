@@ -3,7 +3,7 @@
 import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/navbar";
 import { Button } from "@nextui-org/button";
-import {Dropdown} from "@/components/Dropdown/Dropdown";
+import {Dropdown1} from "@/components/Dropdown/Dropdown1";
 
 const itemsNavbar = [
   {
@@ -77,7 +77,7 @@ export const MenuBar = () => {
                             {item.label}
                           </Button>
                       ) : (
-                          <Dropdown buttonTitle={item.label} items={item.children} />
+                          <Dropdown1 buttonTitle={item.label} items={item.children} />
                       )
                     }
 
