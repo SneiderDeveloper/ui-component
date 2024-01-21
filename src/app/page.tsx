@@ -2,6 +2,9 @@ import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 import { Search } from '@/components/Search/Search'
 import { NavigationTabs } from '@/components/NavigationTabs/NavigationTabs'
 import { TableSimple } from '@/components/TableSimple/TableSimple'
+import { Carousel } from '@/components/Carousel/Carousel';
+
+import { EmblaOptionsType } from 'embla-carousel-react'
 
 export default function Home() {
 
@@ -107,12 +110,19 @@ export default function Home() {
     },
   ]
 
+  const OPTIONS: EmblaOptionsType = {}
+  const SLIDE_COUNT = 4
+  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+
   return (
     <main className="grid gap-10 p-4">
       <Search placeholder='Types of potatoes' label='Search'/>
       <NavigationTabs tabs={ tabs } />
       <TableSimple rows={ rows } columns={ columns }/>
       <Breadcrumbs breadcrumbs={ items } />
+      <section className="sandbox__carousel">
+        <Carousel slides={ SLIDES } options={OPTIONS}/>
+      </section>
     </main>
   )
 }

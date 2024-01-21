@@ -16,6 +16,7 @@
     "@nextui-org/table": "^2.0.28",
     "@nextui-org/tabs": "^2.0.26",
     "@nextui-org/theme": "^2.1.17",
+    "embla-carousel-react": "8.0.0-rc17",
     "framer-motion": "^10.16.16",
     "next": "14.0.4",
     "react": "^18",
