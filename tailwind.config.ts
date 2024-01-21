@@ -11,6 +11,7 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/components/card.js',
     './node_modules/@nextui-org/theme/dist/components/table.js',
     './node_modules/@nextui-org/theme/dist/components/breadcrumbs.js',
+    './node_modules/@nextui-org/theme/dist/components/dropdown.js',
   ],
   theme: {
     extend: {},

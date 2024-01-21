@@ -2,6 +2,11 @@ import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 import { Search } from '@/components/Search/Search'
 import { NavigationTabs } from '@/components/NavigationTabs/NavigationTabs'
 import { TableSimple } from '@/components/TableSimple/TableSimple'
+import { MenuBar } from '@/components/MenuBar/MenuBar'
+import { Dropdown1 } from '@/components/Dropdown/Dropdown1'
+import { Dropdown } from '@/components/Dropdown/Dropdown'
+import { Header } from '@/components/Header/Header'
+
 
 export default function Home() {
 
@@ -107,12 +112,62 @@ export default function Home() {
     },
   ]
 
+  const itemsDropdown = [
+    { 
+      id: 1,
+      href: '/', 
+      label: 'Home' 
+    },
+    { 
+      id: 2,
+      href: '/music', 
+      label: 'Music' 
+    },
+    { 
+      id: 3,
+      href: '/artist', 
+      label: 'Artist' 
+    },
+    { 
+      id: 4,
+      href: '/album', 
+      label: 'Album' 
+    },
+    { 
+      id: 5,
+      href: '/song', 
+      label: 'Song' 
+    },
+    { 
+      id: 6,
+      href: '/genre', 
+      label: 'Genre' 
+    },
+    { 
+      id: 7,
+      href: '/playlist', 
+      label: 'Playlist'
+    },
+    { 
+      id: 8,
+      href: '/search', 
+      label: 'Search'
+    },
+  ]
+
   return (
     <main className="grid gap-10 p-4">
       <Search placeholder='Types of potatoes' label='Search'/>
       <NavigationTabs tabs={ tabs } />
       <TableSimple rows={ rows } columns={ columns }/>
       <Breadcrumbs breadcrumbs={ items } />
+      <Dropdown mt-4
+        buttonTitle={'DDM'} 
+        options={{ selectionMode: "multiple", unhover: true}}
+        items={[{ key: 'Prueba1', label: 'Option1', href: '#' }, 
+                { key: 'prueba2', label: 'Option2', href: '#' }, ]} 
+                
+      />
     </main>
   )
 }

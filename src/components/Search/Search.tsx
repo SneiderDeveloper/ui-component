@@ -58,7 +58,7 @@ export const Search = ({
     const stylesDefault = {
         label: style?.label || 'text-black/50 dark:text-white/90',
         input: [
-            'bg-transparent',
+            'bg-white',
             'text-black/90 dark:text-white/90',
             'placeholder:text-default-700/50 dark:placeholder:text-white/60',
             ...style?.input || [],
