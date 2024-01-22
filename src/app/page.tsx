@@ -2,10 +2,7 @@ import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 import { Search } from '@/components/Search/Search'
 import { NavigationTabs } from '@/components/NavigationTabs/NavigationTabs'
 import { TableSimple } from '@/components/TableSimple/TableSimple'
-import { MenuBar } from '@/components/MenuBar/MenuBar'
-import { Dropdown1 } from '@/components/Dropdown/Dropdown1'
 import { Dropdown } from '@/components/Dropdown/Dropdown'
-import { Header } from '@/components/Header/Header'
 
 
 export default function Home() {
@@ -116,7 +113,9 @@ export default function Home() {
     { 
       id: 1,
       href: '/', 
-      label: 'Home' 
+      label: 'Home',
+      shortcut: '⌘H',
+      startContent: '🏠',
     },
     { 
       id: 2,
@@ -141,17 +140,23 @@ export default function Home() {
     { 
       id: 6,
       href: '/genre', 
-      label: 'Genre' 
+      label: 'Genre',
+      disabled: true,
     },
     { 
       id: 7,
       href: '/playlist', 
-      label: 'Playlist'
+      label: 'Playlist',
+      shortcut: '⌘K',
     },
     { 
       id: 8,
       href: '/search', 
-      label: 'Search'
+      label: 'Eliminar',
+      shortcut: '⌘D',
+      color: 'danger',
+      className: 'text-danger',
+      startContent: '🗑️',
     },
   ]
 
@@ -161,13 +166,42 @@ export default function Home() {
       <NavigationTabs tabs={ tabs } />
       <TableSimple rows={ rows } columns={ columns }/>
       <Breadcrumbs breadcrumbs={ items } />
-      <Dropdown mt-4
-        buttonTitle={'DDM'} 
-        options={{ selectionMode: "multiple", unhover: true}}
-        items={[{ key: 'Prueba1', label: 'Option1', href: '#' }, 
-                { key: 'prueba2', label: 'Option2', href: '#' }, ]} 
-                
-      />
+      <div className='flex items-center gap-4'>
+        <Dropdown
+          title={'solid'} 
+          options={{ selectionMode: "multiple", unhover: true}}
+          items={ itemsDropdown } 
+          commonStyle={{ color: 'secondary', variant: 'solid' }}        
+        />
+        <Dropdown
+          title={'bordered'} 
+          options={{ selectionMode: "multiple", unhover: true}}
+          items={ itemsDropdown } 
+          commonStyle={{ color: 'secondary', variant: 'bordered' }}        
+        />
+        <Dropdown
+          title={'faded'} 
+          options={{ selectionMode: "multiple", unhover: true}}
+          items={ itemsDropdown } 
+          commonStyle={{ color: 'secondary', variant: 'faded' }}        
+        />
+        <Dropdown
+          title={'light'} 
+          options={{ selectionMode: "multiple", unhover: true}}
+          items={ itemsDropdown } 
+          commonStyle={{ color: 'secondary', variant: 'light' }}        
+        />
+        <Dropdown
+          title={'Open Menu'} 
+          options={{ selectionMode: "multiple", unhover: true}}
+          items={ itemsDropdown } 
+          user={{
+            name: 'Tony Reichert',
+            avatar: 'https://avatars.githubusercontent.com/u/352421',
+            description: 'CEO'
+          }}      
+        />
+      </div>
     </main>
   )
 }

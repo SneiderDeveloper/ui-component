@@ -2,41 +2,64 @@
 
 import { Dropdown as DropdownContainer, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ChevronDown } from "./Icons.tsx";
-import { Avatar } from "@nextui-org/avatar";
+// import { Avatar } from "@nextui-org/avatar";
 import { User } from "@nextui-org/user";
 
 // Se establecen las props o interfaces de cada objeto
 
 //Props de los items que se guardaran como opciones en el dropdown
 interface Item {
-  key?: string;
-  label?: string;
-  href?: string;
+  id: string | number;
+  label: string;
+  href: string;
+  shortcut?: string;
+  startContent?: string;
+  disabled?: boolean;
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | undefined;
+  className?: string;
 }
 
-//
 interface Options {
   selectionMode: string;
   unhover: boolean;
 }
 
-//Props que serán solicitadas para habilitar la interface dropdown en pantalla.
+interface CommonStyle {
+  color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | undefined;
+  variant?: 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | undefined;
+  className?: string;
+}
+
+interface Avatar {
+  name?: string;
+  avatar?: string;
+  description?: string;
+}
+
+
 interface DropdownProps {
-  buttonTitle: string;
+  title: string;
   items: Item[];
-  commonStyle?: object; 
+  user?: Avatar;
+  commonStyle?: CommonStyle; 
   options: Options;
 }
 
-//Se desarrolla la lógica en el componente
-export const Dropdown: FC<DropdownProps> = ({buttonTitle, items, commonStyle, options}) => {
+export const Dropdown: FC<DropdownProps> = ({ 
+  title, 
+  items,
+  // isAvatar,
+  user,
+  commonStyle,
+  options 
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false)
   const [bgColor, setBgColor] = useState("white");
+  const [disabledItems, setDisabledItems] = useState([])
 
-  //Se establece el algoritmo para redirigirse a link inyectado en href
   const handleItemClick = (href?: string) => {
     if (href) {
     window.location.href = href;
@@ -44,14 +67,12 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items, commonStyle, op
     }
   };
 
-  //Se crea constante para abrir o cerrar el Dropdown dando click
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
     setIsHovered(false);
   }
 
   
-  //Se confirma que pasa al activar el estado setIsOpen.
   const toggleDropdown = (open: boolean) => {
     setIsOpen(open);
   }
@@ -74,44 +95,68 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items, commonStyle, op
       />
     ),  
   };
+
+  const filterKeysFromDisabled = (items: Item[]) => {
+    const disabledElementKeys: any = items
+      .filter(item => item?.disabled === true)
+      .map(item => String(item?.id))
+    return disabledElementKeys
+  }
   
-  //Se establece el renderizado final y sus efectos
+  useEffect(() => {
+    setDisabledItems(filterKeysFromDisabled(items))
+  }, [items])
+
   return (
-    
-    <DropdownContainer 
-      isOpen={isOpen} 
-      onMouseEnter={() => toggleDropdown(true)} 
-      onMouseLeave={() => toggleDropdown(false)}
-      
-    >
-      
+    <DropdownContainer  backdrop="blur">
       <DropdownTrigger>
-          <Button 
-            variant="bordered"
-            style={linkStyle} 
-            endContent={icons.chevron}
-            onClick={handleButtonClick}
-            onMouseEnter={() => toggleDropdown(true)} 
-            onMouseLeave={() => toggleDropdown(false)}
-          >
-            {buttonTitle}
-          </Button>
+        {
+          user ? (
+            <User
+              as="button"
+              avatarProps={{
+                isBordered: true,
+                src: user?.avatar ,
+              }}
+              // className="transition-transform"
+              name={ user?.name }
+              description={ user?.description }
+            />
+          ) : (
+            <Button 
+              color={ commonStyle?.color }
+              variant={ commonStyle?.variant }
+              // style={linkStyle} 
+              endContent={ icons.chevron }
+              onClick={ handleButtonClick }
+              // onMouseEnter={() => toggleDropdown(true)} 
+              // onMouseLeave={() => toggleDropdown(false)}
+              className="p-4"
+            >
+              { title }
+            </Button>
+          )
+        }
       </DropdownTrigger>
       <DropdownMenu 
-        aria-label="Dynamic Actions" items={items}
-        style={{ background: "auto", border: '1px solid lightgray', borderRadius: '10px', color: "borde-gray-300"}} 
-        >
-        {(item) => (
-        <DropdownItem 
-          key={item.key} 
-          onClick={() => handleItemClick(item.href)}
-          className="border border-gray-300 p-2"
+        aria-label="Dynamic Actions" 
+        // items={items}
+        variant={ commonStyle?.variant }
+        disabledKeys={ disabledItems }
+      >
+        {items.map(item => (
+          <DropdownItem 
+            key={ item?.id } 
+            onClick={() => handleItemClick(item?.href)}
+            shortcut={ item?.shortcut }
+            startContent={ item?.startContent }
+            className={ item?.className }
+            color={ item?.color }
           >
-          {item.label}
-        </DropdownItem>
-        )}
+            { item.label }
+          </DropdownItem> 
+        ))}
       </DropdownMenu>
-      
     </DropdownContainer>
   );
 };
