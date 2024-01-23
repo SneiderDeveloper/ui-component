@@ -8,6 +8,7 @@ export const COMPONENTS: {[key: string]: any} = {
   "slider::slider.Owl": (props: any) => <Slider {...props} />,
   "isite::carousel.owl-carousel": (props: any) => <OwlCarousel {...props} />,
   "isite::lists": (props: any) => <List {...props} />,
+  "undefined": () => <></>
 };
 /*
 

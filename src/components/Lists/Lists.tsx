@@ -1,16 +1,10 @@
-import {getDataFetcher} from "@/services/blocks.service";
 import React from "react";
+import {BlockWithData} from "@/interfaces/block.interface";
 
-export default async function List({req, ...params}: any) {
-  const data = await getDataFetcher(req.path, req.params)
-console.warn(data)
-  return <>
-    {data.map((item: any) => (
-      <div key={item.id}>
-        {item.title} | {item.description}
-      </div>
-    ))}
-  </>
+export default async function List(data: BlockWithData) {
+  return <pre>
+    {JSON.stringify(data, null, 2)}
+  </pre>
 }
 
 /*
