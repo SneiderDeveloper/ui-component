@@ -111,46 +111,46 @@ export default function Home() {
 
   const itemsDropdown = [
     { 
-      id: 1,
+      key: 1,
       href: '/', 
       label: 'Home',
       shortcut: '⌘H',
       startContent: '🏠',
     },
     { 
-      id: 2,
+      key: 2,
       href: '/music', 
       label: 'Music' 
     },
     { 
-      id: 3,
+      key: 3,
       href: '/artist', 
       label: 'Artist' 
     },
     { 
-      id: 4,
+      key: 4,
       href: '/album', 
       label: 'Album' 
     },
     { 
-      id: 5,
+      key: 5,
       href: '/song', 
       label: 'Song' 
     },
     { 
-      id: 6,
+      key: 6,
       href: '/genre', 
       label: 'Genre',
       disabled: true,
     },
     { 
-      id: 7,
+      key: 7,
       href: '/playlist', 
       label: 'Playlist',
       shortcut: '⌘K',
     },
     { 
-      id: 8,
+      key: 8,
       href: '/search', 
       label: 'Eliminar',
       shortcut: '⌘D',
@@ -168,37 +168,25 @@ export default function Home() {
       <Breadcrumbs breadcrumbs={ items } />
       <div className='flex items-center gap-4'>
         <Dropdown
-          title={'solid'} 
-          options={{ selectionMode: "multiple", unhover: true}}
+          title={'solid'}
           items={ itemsDropdown } 
-          commonStyle={{ color: 'secondary', variant: 'solid' }}        
+          dropdownItem={{ color: 'primary' }}
+          dropdownMenu={{ variant: 'solid' }}      
         />
         <Dropdown
-          title={'bordered'} 
-          options={{ selectionMode: "multiple", unhover: true}}
+          title={'solid'}
           items={ itemsDropdown } 
-          commonStyle={{ color: 'secondary', variant: 'bordered' }}        
+          dropdownItem={{ color: 'secondary' }}
+          dropdownMenu={{ variant: 'bordered', selectionMode: 'single' }}      
         />
         <Dropdown
-          title={'faded'} 
-          options={{ selectionMode: "multiple", unhover: true}}
+          title={'solid'}
           items={ itemsDropdown } 
-          commonStyle={{ color: 'secondary', variant: 'faded' }}        
-        />
-        <Dropdown
-          title={'light'} 
-          options={{ selectionMode: "multiple", unhover: true}}
-          items={ itemsDropdown } 
-          commonStyle={{ color: 'secondary', variant: 'light' }}        
-        />
-        <Dropdown
-          title={'Open Menu'} 
-          options={{ selectionMode: "multiple", unhover: true}}
-          items={ itemsDropdown } 
-          user={{
-            name: 'Tony Reichert',
-            avatar: 'https://avatars.githubusercontent.com/u/352421',
-            description: 'CEO'
+          dropdownItem={{ color: 'secondary' }}
+          dropdownMenu={{ 
+            variant: 'flat', 
+            selectionMode: 'multiple',
+            closeOnSelect: false, 
           }}      
         />
       </div>
