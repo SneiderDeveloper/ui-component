@@ -8,20 +8,17 @@ import { Avatar } from "@nextui-org/avatar";
 import { User } from "@nextui-org/user";
 
 // Se establecen las props o interfaces de cada objeto
-
 //Props de los items que se guardaran como opciones en el dropdown
 interface Item {
   key?: string;
   label?: string;
   href?: string;
 }
-
 //
 interface Options {
   selectionMode: string;
   unhover: boolean;
 }
-
 //Props que serán solicitadas para habilitar la interface dropdown en pantalla.
 interface DropdownProps {
   buttonTitle: string;
@@ -29,13 +26,11 @@ interface DropdownProps {
   commonStyle?: object; 
   options: Options;
 }
-
 //Se desarrolla la lógica en el componente
 export const Dropdown: FC<DropdownProps> = ({buttonTitle, items, commonStyle, options}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false)
   const [bgColor, setBgColor] = useState("white");
-
   //Se establece el algoritmo para redirigirse a link inyectado en href
   const handleItemClick = (href?: string) => {
     if (href) {
@@ -43,19 +38,15 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items, commonStyle, op
     setIsOpen(false);
     }
   };
-
   //Se crea constante para abrir o cerrar el Dropdown dando click
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
     setIsHovered(false);
   }
-
-  
   //Se confirma que pasa al activar el estado setIsOpen.
   const toggleDropdown = (open: boolean) => {
     setIsOpen(open);
   }
-  
   const linkStyle: React.CSSProperties = {
     padding: '8px 12px',    
     borderRadius: '10px',
@@ -63,7 +54,6 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items, commonStyle, op
     fontSize: '16px',
     ...commonStyle,
   };
-
   const icons = {
     chevron: (
       <ChevronDown
@@ -74,17 +64,13 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items, commonStyle, op
       />
     ),  
   };
-  
   //Se establece el renderizado final y sus efectos
   return (
-    
     <DropdownContainer 
       isOpen={isOpen} 
       onMouseEnter={() => toggleDropdown(true)} 
       onMouseLeave={() => toggleDropdown(false)}
-      
     >
-      
       <DropdownTrigger>
           <Button 
             variant="bordered"
@@ -111,7 +97,6 @@ export const Dropdown: FC<DropdownProps> = ({buttonTitle, items, commonStyle, op
         </DropdownItem>
         )}
       </DropdownMenu>
-      
     </DropdownContainer>
   );
 };
