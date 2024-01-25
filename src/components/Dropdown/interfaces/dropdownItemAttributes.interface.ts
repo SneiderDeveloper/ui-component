@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 export interface DropdownItemAttributes {
     color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | undefined;
-    key: [];
+    key?: string | number;
     title?: string | ReactNode;
     textValue?: string;
     description?: string;

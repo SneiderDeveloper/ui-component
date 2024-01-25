@@ -143,11 +143,16 @@ export default function Home() {
       label: 'Genre',
       disabled: true,
     },
+  ]
+
+  const itemsDropdownSection = [
     { 
       key: 7,
       href: '/playlist', 
       label: 'Playlist',
       shortcut: '⌘K',
+      description: 'Create a new playlist',
+      showDivider: true
     },
     { 
       key: 8,
@@ -157,6 +162,7 @@ export default function Home() {
       color: 'danger',
       className: 'text-danger',
       startContent: '🗑️',
+      description: 'Delete this item',
     },
   ]
 
@@ -187,6 +193,9 @@ export default function Home() {
             variant: 'flat', 
             selectionMode: 'multiple',
             closeOnSelect: false, 
+          }}
+          dropdownSection={{
+            title: 'Section',
           }}      
         />
       </div>

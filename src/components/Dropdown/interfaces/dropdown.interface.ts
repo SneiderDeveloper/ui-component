@@ -1,16 +1,32 @@
 import { DropdownAttributes } from './dropdownAttributes.interface';
 import { DropdownItemAttributes } from './dropdownItemAttributes.interface';
 import { DropdownMenuAttributes } from './dropdownMenuAttributes.interface';
+import { DropdownSectionAttributes } from './dropdownSectionAttributes.interface';
+import { ReactNode } from 'react';
 
 export interface Item {
-    key: string | number;
     label: string;
-    href: string;
-    shortcut?: string | undefined;
-    startContent?: string | JSX.Element | undefined;
     disabled?: boolean | undefined;
+
     color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | undefined;
-    className?: string | undefined;
+    key?: string | number;
+    title?: string | ReactNode;
+    textValue?: string;
+    description?: string;
+    shortcut?: string;
+    startContent?: ReactNode | string;
+    endContent?: ReactNode;
+    showDivider?: boolean;
+    href?: boolean;
+    rel?: string;
+    download?: boolean | string;
+    ping?: string;
+    isDisabled?: boolean;
+    isSelected?: boolean;
+    isReadOnly?: boolean;
+    hideSelectedIcon?: boolean;
+    closeOnSelect?: boolean;
+    classNames?: string;
 }
 
 export interface Avatar {
@@ -26,4 +42,5 @@ export interface DropdownProps {
     dropdown: DropdownAttributes;
     dropdownItem: DropdownItemAttributes;
     dropdownMenu: DropdownMenuAttributes;
+    dropdownSection: DropdownSectionAttributes;
 }
