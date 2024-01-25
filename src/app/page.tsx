@@ -110,60 +110,66 @@ export default function Home() {
   ]
 
   const itemsDropdown = [
-    { 
-      key: 1,
-      href: '/', 
-      label: 'Home',
-      shortcut: '⌘H',
-      startContent: '🏠',
+    {
+      titleSection: 'Selection',
+      items: [
+        { 
+          key: 1,
+          href: '/', 
+          label: 'Home',
+          shortcut: '⌘H',
+          startContent: '🏠',
+        },
+        { 
+          key: 2,
+          href: '/music', 
+          label: 'Music' 
+        },
+        { 
+          key: 3,
+          href: '/artist', 
+          label: 'Artist' 
+        },
+        { 
+          key: 4,
+          href: '/album', 
+          label: 'Album' 
+        },
+        { 
+          key: 5,
+          href: '/song', 
+          label: 'Song' 
+        },
+        { 
+          key: 6,
+          href: '/genre', 
+          label: 'Genre' 
+        },
+        { 
+          key: 7,
+          href: '/playlist', 
+          label: 'Playlist',
+          shortcut: '⌘K',
+          description: 'Create a new playlist',
+          showDivider: true
+        },
+      ]
     },
-    { 
-      key: 2,
-      href: '/music', 
-      label: 'Music' 
-    },
-    { 
-      key: 3,
-      href: '/artist', 
-      label: 'Artist' 
-    },
-    { 
-      key: 4,
-      href: '/album', 
-      label: 'Album' 
-    },
-    { 
-      key: 5,
-      href: '/song', 
-      label: 'Song' 
-    },
-    { 
-      key: 6,
-      href: '/genre', 
-      label: 'Genre',
-      disabled: true,
-    },
-  ]
-
-  const itemsDropdownSection = [
-    { 
-      key: 7,
-      href: '/playlist', 
-      label: 'Playlist',
-      shortcut: '⌘K',
-      description: 'Create a new playlist',
-      showDivider: true
-    },
-    { 
-      key: 8,
-      href: '/search', 
-      label: 'Eliminar',
-      shortcut: '⌘D',
-      color: 'danger',
-      className: 'text-danger',
-      startContent: '🗑️',
-      description: 'Delete this item',
-    },
+    {
+      titleSection: 'Danger',
+      items: [
+        { 
+          key: 8,
+          href: '/search', 
+          label: 'Eliminar',
+          shortcut: '⌘D',
+          color: 'danger',
+          className: 'text-danger',
+          startContent: '🗑️',
+          description: 'Delete this item',
+        },
+      ]
+    }
   ]
 
   return (
@@ -175,28 +181,25 @@ export default function Home() {
       <div className='flex items-center gap-4'>
         <Dropdown
           title={'solid'}
-          items={ itemsDropdown } 
+          sections={ itemsDropdown } 
           dropdownItem={{ color: 'primary' }}
           dropdownMenu={{ variant: 'solid' }}      
         />
         <Dropdown
           title={'solid'}
-          items={ itemsDropdown } 
+          sections={ itemsDropdown } 
           dropdownItem={{ color: 'secondary' }}
           dropdownMenu={{ variant: 'bordered', selectionMode: 'single' }}      
         />
         <Dropdown
           title={'solid'}
-          items={ itemsDropdown } 
+          sections={ itemsDropdown } 
           dropdownItem={{ color: 'secondary' }}
           dropdownMenu={{ 
             variant: 'flat', 
             selectionMode: 'multiple',
             closeOnSelect: false, 
-          }}
-          dropdownSection={{
-            title: 'Section',
-          }}      
+          }}    
         />
       </div>
     </main>

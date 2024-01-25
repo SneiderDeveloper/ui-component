@@ -29,6 +29,11 @@ export interface Item {
     classNames?: string;
 }
 
+export interface Section {
+    title?: string;
+    items?: Item[];
+}
+
 export interface Avatar {
     name?: string;
     avatar?: string;
@@ -37,7 +42,7 @@ export interface Avatar {
 
 export interface DropdownProps {
     title: string;
-    items: Item[];
+    sections: Section[];
     user?: Avatar;
     dropdown: DropdownAttributes;
     dropdownItem: DropdownItemAttributes;

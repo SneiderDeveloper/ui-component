@@ -4,17 +4,20 @@ import {
   Dropdown as DropdownContainer, 
   DropdownTrigger, DropdownMenu, 
   DropdownItem, DropdownSection 
-} from "@nextui-org/dropdown";
-import { Button } from "@nextui-org/button";
-import { FC, useEffect, useState, useMemo } from "react";
-import { ChevronDown } from "./Icons.tsx";
-// import { Avatar } from "@nextui-org/avatar";
-import { User } from "@nextui-org/user";
-import { DropdownProps, Item } from "./interfaces/dropdown.interface.ts"; 
+} from '@nextui-org/dropdown';
+import { Button } from '@nextui-org/button';
+import { FC, useEffect, useState, useMemo } from 'react';
+import { ChevronDown } from './Icons.tsx';
+// import { Avatar } from '@nextui-org/avatar';
+import { User } from '@nextui-org/user';
+import { DropdownProps, Section, Item } from './interfaces/dropdown.interface.ts';
+import { extractElements } from './helpers/extractElements.ts';
+import { filterKeysFromDisabled } from './helpers/filterKeysFromDisabled.ts';
+import { getSelectedLabels } from './helpers/getSelectedLabels.ts';
 
 export const Dropdown: FC<DropdownProps> = ({ 
   title, 
-  items=[],
+  sections=[],
   user,
   dropdown,
   dropdownItem,
@@ -49,89 +52,84 @@ export const Dropdown: FC<DropdownProps> = ({
       <ChevronDown
         fill="currentColor" 
         size={18}
-        rotate={isOpen ? 180 : 0}
+        rotate={ isOpen ? 180 : 0 }
         className="ml-2"
       />
     ),  
   };
 
-  const filterKeysFromDisabled = (items: Item[]) => {
-    const disabledElementKeys: any = items
-      .filter(item => item?.disabled === true)
-      .map(item => String(item?.key))
-    return disabledElementKeys
-  }
-
   const selectedValue = useMemo(
     () => {
-      const selectList: string[] = []
-      items.map(item => {
-        if (Array.from(selectedKeys).includes(String(item?.key))) {
-          selectList.push(item?.label)
-        }
-      })
-      return selectList.join(", ")
+      return getSelectedLabels({ sections, selectedKeys })
     },
-      [selectedKeys]
+    [selectedKeys]
   );
   
   useEffect(() => {
-    setDisabledItems(filterKeysFromDisabled(items))
-  }, [items])
+    setDisabledItems(filterKeysFromDisabled(sections))
+  }, [])
 
   return (
-    <DropdownContainer  
-      { ...dropdown }
-    >
-      <DropdownTrigger>
-        {
-          user ? (
-            <User
-              as="button"
-              avatarProps={{
-                isBordered: true,
-                src: user?.avatar ,
-              }}
-              name={ user?.name }
-              description={ user?.description }
-            />
-          ) : (
-            <Button 
-              color={ dropdownItem?.color }
-              variant={ dropdownMenu?.variant }
-              endContent={ dropdown ? false : icons.chevron }
-              onClick={ handleButtonClick }
-              // onMouseEnter={() => toggleDropdown(true)} 
-              // onMouseLeave={() => toggleDropdown(false)}
-              className="p-4"
-            >
-              { dropdownMenu?.selectionMode ? selectedValue : title }
-            </Button>
-          )
-        }
-      </DropdownTrigger>
-      <DropdownMenu 
-        aria-label="Dynamic Actions" 
-        // items={items}
-        { ...dropdownMenu }
-        disabledKeys={ disabledItems }
-        disallowEmptySelection
-        selectedKeys={ selectedKeys }
-        onSelectionChange={ setSelectedKeys }
+      <DropdownContainer  
+        { ...dropdown }
       >
-        {items.map(item => (
-          <DropdownSection { ...dropdownSection }>
-              <DropdownItem 
-                key={ item?.key } 
-                // onClick={() => handleItemClick(item)}
-                { ...item }
+        <DropdownTrigger>
+          {
+            user ? (
+              <User
+                as="button"
+                avatarProps={{
+                  isBordered: true,
+                  src: user?.avatar ,
+                }}
+                name={ user?.name }
+                description={ user?.description }
+              />
+            ) : (
+              <Button 
+                color={ dropdownItem?.color as "primary" | "secondary" | "success" | "warning" | "danger" | "default" | undefined }
+                variant={ dropdownMenu?.variant }
+                endContent={ dropdown ? false : icons.chevron }
+                onClick={ handleButtonClick }
+                // onMouseEnter={() => toggleDropdown(true)} 
+                // onMouseLeave={() => toggleDropdown(false)}
+                className="p-4"
               >
-                { item.label }
-              </DropdownItem> 
-          </DropdownSection>
-        ))}
-      </DropdownMenu>
-    </DropdownContainer>
-  );
+                { dropdownMenu?.selectionMode ? selectedValue || '' : title }
+              </Button>
+            )
+          }
+        </DropdownTrigger>
+        <DropdownMenu 
+          aria-label="Dynamic Actions" 
+          // items={items}
+          { ...dropdownMenu }
+          disabledKeys={ disabledItems }
+          disallowEmptySelection
+          selectedKeys={ selectedKeys }
+          onSelectionChange={ (keys: any) => setSelectedKeys(Array.from(keys as Iterable<string>)) }
+          color={dropdownMenu?.color as "primary" | "secondary" | "success" | "warning" | "danger" | "default" | undefined}
+          autoFocus={true} // Fix for problem 1
+        >
+          {sections.map((section: Section, index) => (
+            <DropdownSection 
+              key={ index } 
+              title={ section?.titleSection }
+              { ...dropdownSection }
+            >
+              {section?.items.map((item: Item) => (
+                  <DropdownItem 
+                    key={ item?.key } 
+                    // onClick={() => handleItemClick(item)}
+                    { ...item }
+                  >
+                    { item.label }
+                  </DropdownItem>
+              ))}
+            </DropdownSection>
+          ))}
+        </DropdownMenu>
+      </DropdownContainer>
+    );
 };
 
