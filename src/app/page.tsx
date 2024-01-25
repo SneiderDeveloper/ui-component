@@ -3,6 +3,7 @@ import { Search } from '@/components/Search/Search'
 import { NavigationTabs } from '@/components/NavigationTabs/NavigationTabs'
 import { TableSimple } from '@/components/TableSimple/TableSimple'
 
+
 export default function Home() {
 
   let tabs = [
