@@ -6,12 +6,12 @@ export const getSelectedLabels = ({
     selectedKeys
 }: {
     sections: Section[], 
-    selectedKeys: string[]
+    selectedKeys: Set<string>
 }): string => {
     const selectList: string[] = []
     extractElements(sections).map((item: Item) => {
-        if (Array.from(selectedKeys).includes(String(item?.key))) {
-        selectList.push(item?.label)
+        if (Array.from(selectedKeys).includes(String(item?.id))) {
+            selectList.push(item?.label)
         }
     })
     return selectList.join(", ")

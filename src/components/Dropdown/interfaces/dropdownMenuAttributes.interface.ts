@@ -1,15 +1,15 @@
 import { ReactNode } from "react";
 
 export interface DropdownMenuAttributes {
-    variant?: 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow' | undefined;
+    variant?: 'solid' | 'bordered' | 'light' | 'flat' | 'faded' | 'shadow';
     selectionMode?: 'single' | 'multiple' | undefined;
     closeOnSelect?: boolean;
     items?: []; 
-    color?: 'solid' | 'primary' | 'seconday' | 'sucess' | 'warning' | 'danger' | undefined;
+    color?: 'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | undefined;
     selectedKeys?:[];
-    disabledKeys?: [] | 'all';
+    // disabledKeys?: [] | 'all';
     disallowEmptySelection?: boolean;
-    autoFocus?: boolean | 'firts' | 'last';
+    autoFocus?: boolean;
     topContent?: ReactNode;
     bottomContent?: ReactNode;
     emptyContent?: ReactNode;

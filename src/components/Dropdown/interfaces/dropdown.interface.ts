@@ -5,11 +5,12 @@ import { DropdownSectionAttributes } from './dropdownSectionAttributes.interface
 import { ReactNode } from 'react';
 
 export interface Item {
+    id: string | number | undefined;
     label: string;
-    disabled?: boolean | undefined;
 
+    href?: string;
+    disabled?: boolean;
     color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | undefined;
-    key?: string | number;
     title?: string | ReactNode;
     textValue?: string;
     description?: string;
@@ -17,20 +18,17 @@ export interface Item {
     startContent?: ReactNode | string;
     endContent?: ReactNode;
     showDivider?: boolean;
-    href?: boolean;
     rel?: string;
     download?: boolean | string;
     ping?: string;
-    isDisabled?: boolean;
-    isSelected?: boolean;
     isReadOnly?: boolean;
     hideSelectedIcon?: boolean;
     closeOnSelect?: boolean;
-    classNames?: string;
+    // classNames?: string;
 }
 
 export interface Section {
-    title?: string;
+    titleSection?: string;
     items?: Item[];
 }
 
@@ -44,8 +42,8 @@ export interface DropdownProps {
     title: string;
     sections: Section[];
     user?: Avatar;
-    dropdown: DropdownAttributes;
-    dropdownItem: DropdownItemAttributes;
-    dropdownMenu: DropdownMenuAttributes;
-    dropdownSection: DropdownSectionAttributes;
+    dropdown?: DropdownAttributes;
+    dropdownItem?: DropdownItemAttributes;
+    dropdownMenu?: DropdownMenuAttributes;
+    dropdownSection?: DropdownSectionAttributes;
 }

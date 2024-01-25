@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 export interface DropdownItemAttributes {
     color?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | undefined;
+    disabled?: boolean;
     key?: string | number;
     title?: string | ReactNode;
     textValue?: string;
@@ -14,7 +15,6 @@ export interface DropdownItemAttributes {
     rel?: string;
     download?: boolean | string;
     ping?: string;
-    isDisabled?: boolean;
     isSelected?: boolean;
     isReadOnly?: boolean;
     hideSelectedIcon?: boolean;

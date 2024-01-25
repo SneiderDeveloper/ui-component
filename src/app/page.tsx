@@ -2,7 +2,6 @@ import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs'
 import { Search } from '@/components/Search/Search'
 import { NavigationTabs } from '@/components/NavigationTabs/NavigationTabs'
 import { TableSimple } from '@/components/TableSimple/TableSimple'
-import { Dropdown } from '@/components/Dropdown/Dropdown'
 
 
 export default function Home() {
@@ -109,99 +108,12 @@ export default function Home() {
     },
   ]
 
-  const itemsDropdown = [
-    {
-      titleSection: 'Selection',
-      items: [
-        { 
-          key: 1,
-          href: '/', 
-          label: 'Home',
-          shortcut: '⌘H',
-          startContent: '🏠',
-        },
-        { 
-          key: 2,
-          href: '/music', 
-          label: 'Music' 
-        },
-        { 
-          key: 3,
-          href: '/artist', 
-          label: 'Artist' 
-        },
-        { 
-          key: 4,
-          href: '/album', 
-          label: 'Album' 
-        },
-        { 
-          key: 5,
-          href: '/song', 
-          label: 'Song' 
-        },
-        { 
-          key: 6,
-          href: '/genre', 
-          label: 'Genre' 
-        },
-        { 
-          key: 7,
-          href: '/playlist', 
-          label: 'Playlist',
-          shortcut: '⌘K',
-          description: 'Create a new playlist',
-          showDivider: true
-        },
-      ]
-    },
-    {
-      titleSection: 'Danger',
-      items: [
-        { 
-          key: 8,
-          href: '/search', 
-          label: 'Eliminar',
-          shortcut: '⌘D',
-          color: 'danger',
-          className: 'text-danger',
-          startContent: '🗑️',
-          description: 'Delete this item',
-        },
-      ]
-    }
-  ]
-
   return (
     <main className="grid gap-10 p-4">
       <Search placeholder='Types of potatoes' label='Search'/>
       <NavigationTabs tabs={ tabs } />
       <TableSimple rows={ rows } columns={ columns }/>
       <Breadcrumbs breadcrumbs={ items } />
-      <div className='flex items-center gap-4'>
-        <Dropdown
-          title={'solid'}
-          sections={ itemsDropdown } 
-          dropdownItem={{ color: 'primary' }}
-          dropdownMenu={{ variant: 'solid' }}      
-        />
-        <Dropdown
-          title={'solid'}
-          sections={ itemsDropdown } 
-          dropdownItem={{ color: 'secondary' }}
-          dropdownMenu={{ variant: 'bordered', selectionMode: 'single' }}      
-        />
-        <Dropdown
-          title={'solid'}
-          sections={ itemsDropdown } 
-          dropdownItem={{ color: 'secondary' }}
-          dropdownMenu={{ 
-            variant: 'flat', 
-            selectionMode: 'multiple',
-            closeOnSelect: false, 
-          }}    
-        />
-      </div>
     </main>
   )
 }

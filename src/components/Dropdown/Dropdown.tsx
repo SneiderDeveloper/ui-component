@@ -8,39 +8,26 @@ import {
 import { Button } from '@nextui-org/button';
 import { FC, useEffect, useState, useMemo } from 'react';
 import { ChevronDown } from './Icons.tsx';
-// import { Avatar } from '@nextui-org/avatar';
 import { User } from '@nextui-org/user';
 import { DropdownProps, Section, Item } from './interfaces/dropdown.interface.ts';
-import { extractElements } from './helpers/extractElements.ts';
+
 import { filterKeysFromDisabled } from './helpers/filterKeysFromDisabled.ts';
 import { getSelectedLabels } from './helpers/getSelectedLabels.ts';
 
 export const Dropdown: FC<DropdownProps> = ({ 
   title, 
-  sections=[],
+  sections=[{items: []}],
   user,
   dropdown,
   dropdownItem,
   dropdownMenu,
   dropdownSection,
+  
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false)
-  // const [bgColor, setBgColor] = useState("white");
+  // const [isHovered, setIsHovered] = useState(false)
   const [disabledItems, setDisabledItems] = useState([])
-  const [selectedKeys, setSelectedKeys] = useState(["1"]);
-
-  const handleItemClick = (href?: string) => {
-    if (href) {
-      setIsOpen(false);
-      window.location.href = href;
-    }
-  };
-
-  const handleButtonClick = () => {
-    setIsOpen(!isOpen);
-    setIsHovered(false);
-  }
+  const [selectedKeys, setSelectedKeys] = useState(new Set(['2']));
 
   
   const toggleDropdown = (open: boolean) => {
@@ -51,7 +38,7 @@ export const Dropdown: FC<DropdownProps> = ({
     chevron: (
       <ChevronDown
         fill="currentColor" 
-        size={18}
+        size={ 18 }
         rotate={ isOpen ? 180 : 0 }
         className="ml-2"
       />
@@ -70,7 +57,8 @@ export const Dropdown: FC<DropdownProps> = ({
   }, [])
 
   return (
-      <DropdownContainer  
+      <DropdownContainer 
+        onOpenChange={ toggleDropdown }
         { ...dropdown }
       >
         <DropdownTrigger>
@@ -87,29 +75,25 @@ export const Dropdown: FC<DropdownProps> = ({
               />
             ) : (
               <Button 
-                color={ dropdownItem?.color as "primary" | "secondary" | "success" | "warning" | "danger" | "default" | undefined }
+                color={ dropdownItem?.color }
                 variant={ dropdownMenu?.variant }
                 endContent={ dropdown ? false : icons.chevron }
-                onClick={ handleButtonClick }
+                // onClick={ handleButtonClick }
                 // onMouseEnter={() => toggleDropdown(true)} 
                 // onMouseLeave={() => toggleDropdown(false)}
                 className="p-4"
               >
-                { dropdownMenu?.selectionMode ? selectedValue || '' : title }
+                { dropdownMenu?.selectionMode ? selectedValue : title }
               </Button>
             )
           }
         </DropdownTrigger>
-        <DropdownMenu 
-          aria-label="Dynamic Actions" 
-          // items={items}
+        <DropdownMenu
           { ...dropdownMenu }
+          aria-label='dropdown-menu'
           disabledKeys={ disabledItems }
-          disallowEmptySelection
           selectedKeys={ selectedKeys }
-          onSelectionChange={ (keys: any) => setSelectedKeys(Array.from(keys as Iterable<string>)) }
-          color={dropdownMenu?.color as "primary" | "secondary" | "success" | "warning" | "danger" | "default" | undefined}
-          autoFocus={true} // Fix for problem 1
+          onSelectionChange={ setSelectedKeys }
         >
           {sections.map((section: Section, index) => (
             <DropdownSection 
@@ -117,15 +101,18 @@ export const Dropdown: FC<DropdownProps> = ({
               title={ section?.titleSection }
               { ...dropdownSection }
             >
-              {section?.items.map((item: Item) => (
-                  <DropdownItem 
-                    key={ item?.key } 
-                    // onClick={() => handleItemClick(item)}
-                    { ...item }
-                  >
-                    { item.label }
-                  </DropdownItem>
-              ))}
+              {
+                section?.items 
+                ? section.items.map((item: Item) => (
+                    <DropdownItem
+                      key={ item.id }
+                      { ...item }
+                    >
+                      { item.label }
+                    </DropdownItem>
+                ))
+                : <DropdownItem />
+              }
             </DropdownSection>
           ))}
         </DropdownMenu>
