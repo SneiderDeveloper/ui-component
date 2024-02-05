@@ -6,6 +6,7 @@ import React from "react";
 
 export default async function CoreController(urlToGetData: string): Promise<BlockWithData[]> {
   const baseUrl = process.env.VERCEL_URL!
+  console.log()
   const layout = await getLayout(`${baseUrl}/api/ibuilder/v1/layouts/1`)
 
   const dataPromises = layout.blocks.map(block => {
