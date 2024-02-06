@@ -1,4 +1,8 @@
-export default function MainBlock () {
+import {controllerMain} from "@/components/MainBlock/controller";
+import {defaultBlockData} from "@/components/MainBlock/constant/default";
+
+export default function MainBlock (data) {
+  const dataMain = controllerMain(defaultBlockData);
   return <>Block..</>
 }
 

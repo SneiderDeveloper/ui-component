@@ -2,8 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import {BlockParams} from "@/components/MainBlock/interface";
 
 export const controllerMain = (params: BlockParams) => {
-  const result = instanceGeneralAttributes(params)
-
+  return instanceGeneralAttributes(params)
 }
 
 //Instance the component attributes
