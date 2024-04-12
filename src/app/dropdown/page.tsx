@@ -1,6 +1,4 @@
-import { Dropdown } from "@/components/Dropdown/Dropdown";
-import { color } from "framer-motion";
-
+import { Dropdown } from '@/components/Dropdown/Dropdown';
 export default function DropdownPage() {
   const itemsOne = [
     {
@@ -8,38 +6,38 @@ export default function DropdownPage() {
       items: [
         {
           id: 1,
-          href: "/",
-          label: "Home",
+          href: '/',
+          label: 'Home',
         },
         {
           id: 2,
-          href: "/music",
-          label: "Music",
+          href: '/music',
+          label: 'Music',
         },
         {
           id: 3,
-          href: "/artist",
-          label: "Artist",
+          href: '/artist',
+          label: 'Artist',
         },
         {
           id: 4,
-          href: "/album",
-          label: "Album",
+          href: '/album',
+          label: 'Album',
         },
         {
           id: 5,
-          href: "/song",
-          label: "Song",
+          href: '/song',
+          label: 'Song',
         },
         {
           id: 6,
-          href: "/genre",
-          label: "Genre",
+          href: '/genre',
+          label: 'Genre',
         },
         {
           id: 7,
-          href: "/playlist",
-          label: "Playlist",
+          href: '/playlist',
+          label: 'Playlist',
           showDivider: true,
         },
       ],
@@ -49,10 +47,10 @@ export default function DropdownPage() {
       items: [
         {
           id: 8,
-          href: "/search",
-          label: "Eliminar",
-          color: "danger",
-          className: "text-danger",
+          href: '/search',
+          label: 'Eliminar',
+          color: 'danger',
+          className: 'text-danger',
         },
       ],
     },
@@ -64,47 +62,47 @@ export default function DropdownPage() {
       items: [
         {
           id: 1,
-          href: "/",
-          label: "Home",
+          href: '/',
+          label: 'Home',
         },
         {
           id: 2,
-          href: "/music",
-          label: "Music",
+          href: '/music',
+          label: 'Music',
         },
         {
           id: 3,
-          href: "/artist",
-          label: "Artist",
+          href: '/artist',
+          label: 'Artist',
         },
         {
           id: 4,
-          href: "/album",
-          label: "Album",
+          href: '/album',
+          label: 'Album',
         },
         {
           id: 5,
-          href: "/song",
-          label: "Song",
+          href: '/song',
+          label: 'Song',
         },
         {
           id: 6,
-          href: "/genre",
-          label: "Genre",
+          href: '/genre',
+          label: 'Genre',
           disabled: true,
         },
         {
           id: 7,
-          href: "/playlist",
-          label: "Playlist",
+          href: '/playlist',
+          label: 'Playlist',
           showDivider: true,
         },
         {
           id: 8,
-          href: "/search",
-          label: "Eliminar",
-          color: "danger",
-          className: "text-danger",
+          href: '/search',
+          label: 'Eliminar',
+          color: 'danger',
+          className: 'text-danger',
         },
       ],
     },
@@ -112,64 +110,64 @@ export default function DropdownPage() {
 
   const itemsthree = [
     {
-      titleSection: "Selection",
+      titleSection: 'Selection',
       items: [
         {
           id: 1,
-          href: "/",
-          label: "Home",
-          shortcut: "⌘H",
+          href: '/',
+          label: 'Home',
+          shortcut: '⌘H',
         },
         {
           id: 2,
-          href: "/music",
-          label: "Music",
-          shortcut: "⌘M",
+          href: '/music',
+          label: 'Music',
+          shortcut: '⌘M',
         },
         {
           id: 3,
-          href: "/artist",
-          label: "Artist",
-          shortcut: "⌘A",
+          href: '/artist',
+          label: 'Artist',
+          shortcut: '⌘A',
         },
         {
           id: 4,
-          href: "/album",
-          label: "Album",
-          shortcut: "⌘L",
+          href: '/album',
+          label: 'Album',
+          shortcut: '⌘L',
         },
         {
           id: 5,
-          href: "/song",
-          label: "Song",
-          shortcut: "⌘S",
+          href: '/song',
+          label: 'Song',
+          shortcut: '⌘S',
         },
         {
           id: 6,
-          href: "/genre",
-          label: "Genre",
-          shortcut: "⌘G",
+          href: '/genre',
+          label: 'Genre',
+          shortcut: '⌘G',
         },
         {
           id: 7,
-          href: "/playlist",
-          label: "Playlist",
-          shortcut: "⌘P",
+          href: '/playlist',
+          label: 'Playlist',
+          shortcut: '⌘P',
           showDivider: true,
         },
       ],
     },
     {
-      titleSection: "Danger",
+      titleSection: 'Danger',
       items: [
         {
           id: 8,
-          href: "/search",
-          label: "Eliminar",
-          shortcut: "⌘D",
-          color: "danger",
-          className: "text-danger",
-          description: "Delete this item",
+          href: '/search',
+          label: 'Eliminar',
+          shortcut: '⌘D',
+          color: 'danger',
+          className: 'text-danger',
+          description: 'Delete this item',
         },
       ],
     },
@@ -177,129 +175,129 @@ export default function DropdownPage() {
 
   const itemsFour = [
     {
-      titleSection: "Selection",
+      titleSection: 'Selection',
       items: [
         {
           id: 1,
 
-          label: "Home",
-          shortcut: "⌘H",
-          startContent: "🏠",
+          label: 'Home',
+          shortcut: '⌘H',
+          startContent: '🏠',
         },
         {
           id: 2,
 
-          label: "Music",
-          shortcut: "⌘M",
-          startContent: "🎵",
+          label: 'Music',
+          shortcut: '⌘M',
+          startContent: '🎵',
         },
         {
           id: 3,
 
-          label: "Artist",
-          shortcut: "⌘A",
-          startContent: "👩‍🎤",
+          label: 'Artist',
+          shortcut: '⌘A',
+          startContent: '👩‍🎤',
         },
         {
           id: 4,
 
-          label: "Album",
-          shortcut: "⌘L",
-          startContent: "💿",
+          label: 'Album',
+          shortcut: '⌘L',
+          startContent: '💿',
         },
         {
           id: 5,
 
-          label: "Song",
-          shortcut: "⌘S",
-          startContent: "🎶",
+          label: 'Song',
+          shortcut: '⌘S',
+          startContent: '🎶',
         },
         {
           id: 6,
 
-          label: "Genre",
-          shortcut: "⌘G",
-          startContent: "🎹",
+          label: 'Genre',
+          shortcut: '⌘G',
+          startContent: '🎹',
         },
         {
           id: 7,
 
-          label: "Playlist",
-          shortcut: "⌘P",
+          label: 'Playlist',
+          shortcut: '⌘P',
           showDivider: true,
-          startContent: "🎼",
+          startContent: '🎼',
         },
       ],
     },
     {
-      titleSection: "Danger",
+      titleSection: 'Danger',
       items: [
         {
           id: 8,
-          href: "/search",
-          label: "Eliminar",
-          shortcut: "⌘D",
-          color: "danger",
-          className: "text-danger",
-          description: "Delete this item",
-          startContent: "❌",
+          href: '/search',
+          label: 'Eliminar',
+          shortcut: '⌘D',
+          color: 'danger',
+          className: 'text-danger',
+          description: 'Delete this item',
+          startContent: '❌',
         },
       ],
     },
   ];
   const itemsSix = [
     {
-      titleSection: "Selection",
+      titleSection: 'Selection',
       items: [
         {
           id: 1,
-          label: "Home",
-          shortcut: "⌘H",
+          label: 'Home',
+          shortcut: '⌘H',
         },
         {
           id: 2,
-          label: "Music",
-          shortcut: "⌘M",
+          label: 'Music',
+          shortcut: '⌘M',
         },
         {
           id: 3,
-          label: "Artist",
-          shortcut: "⌘A",
+          label: 'Artist',
+          shortcut: '⌘A',
         },
         {
           id: 4,
-          label: "Album",
-          shortcut: "⌘L",
+          label: 'Album',
+          shortcut: '⌘L',
         },
         {
           id: 5,
-          label: "Song",
-          shortcut: "⌘S",
+          label: 'Song',
+          shortcut: '⌘S',
         },
         {
           id: 6,
-          label: "Genre",
-          shortcut: "⌘G",
+          label: 'Genre',
+          shortcut: '⌘G',
         },
         {
           id: 7,
-          label: "Playlist",
-          shortcut: "⌘P",
+          label: 'Playlist',
+          shortcut: '⌘P',
           showDivider: true,
         },
       ],
     },
     {
-      titleSection: "Danger",
+      titleSection: 'Danger',
       items: [
         {
           id: 8,
-          href: "/search",
-          label: "Eliminar",
-          shortcut: "⌘D",
-          color: "danger",
-          className: "text-danger",
-          description: "Delete this item",
+          href: '/search',
+          label: 'Eliminar',
+          shortcut: '⌘D',
+          color: 'danger',
+          className: 'text-danger',
+          description: 'Delete this item',
         },
       ],
     },
@@ -309,24 +307,24 @@ export default function DropdownPage() {
     {
       items: [
         {
-          label: "Create a merge commit",
+          label: 'Create a merge commit',
           description:
-            "All commits from the source branch are added to the destination branch via a merge commit.",
-          shortcut: " ✓",
+            'All commits from the source branch are added to the destination branch via a merge commit.',
+          shortcut: ' ✓',
         },
 
         {
-          label: 'Squash and merge"',
+          label: 'Squash and merge'',
           description:
-            "All commits from the source branch are added to the destination branch as a single commit.",
-          shortcut: " ✓",
+            'All commits from the source branch are added to the destination branch as a single commit.',
+          shortcut: ' ✓',
         },
 
         {
-          label: "Rebase and merge",
+          label: 'Rebase and merge',
           description:
-            "All commits from the source branch are added to the destination branch individually.",
-          shortcut: " ✓",
+            'All commits from the source branch are added to the destination branch individually.',
+          shortcut: ' ✓',
         },
       ],
     },
@@ -335,58 +333,58 @@ export default function DropdownPage() {
  
 
   return (
-    <div className="flex gap-2">
+    <div className='flex gap-2'>
       <Dropdown
-        title="solid"
+        title='solid'
         sections={itemsOne}
-        dropdownItem={{ color: "primary" }}
-        dropdownMenu={{ variant: "solid" }}
+        dropdownItem={{ color: 'primary' }}
+        dropdownMenu={{ variant: 'solid' }}
       />
       <Dropdown
-        title="bordered"
+        title='bordered'
         sections={itemsTwo}
-        dropdownItem={{ color: "secondary" }}
-        dropdownMenu={{ variant: "bordered" }}
+        dropdownItem={{ color: 'secondary' }}
+        dropdownMenu={{ variant: 'bordered' }}
       />
       <Dropdown
-        title="light"
+        title='light'
         sections={itemsthree}
-        dropdownItem={{ color: "success" }}
-        dropdownMenu={{ variant: "light" }}
+        dropdownItem={{ color: 'success' }}
+        dropdownMenu={{ variant: 'light' }}
       />
       <Dropdown
-        title="flat"
+        title='flat'
         sections={itemsFour}
-        dropdownItem={{ color: "warning" }}
+        dropdownItem={{ color: 'warning' }}
         dropdownMenu={{
-          variant: "flat",
-          selectionMode: "single",
+          variant: 'flat',
+          selectionMode: 'single',
           disallowEmptySelection: true,
         }}
       />
       <Dropdown
-        title="faded"
+        title='faded'
         sections={itemsFour}
-        dropdownItem={{ color: "warning" }}
+        dropdownItem={{ color: 'warning' }}
         dropdownMenu={{
-          variant: "faded",
-          selectionMode: "multiple",
+          variant: 'faded',
+          selectionMode: 'multiple',
           disallowEmptySelection: true,
         }}
       />
       <Dropdown
-        title="shadow"
+        title='shadow'
         sections={itemsSix}
-        dropdownItem={{ color: "warning" }}
-        dropdownMenu={{ variant: "shadow" }}
+        dropdownItem={{ color: 'warning' }}
+        dropdownMenu={{ variant: 'shadow' }}
       />
 
       <Dropdown
-        size="small"
-        title="DropExample"
+        size='small'
+        title='DropExample'
         sections={itemsSeven}
-        dropdownMenu={{ variant: "bordered" }}
-        dropdownItem={{ color: "warning" }}
+        dropdownMenu={{ variant: 'bordered' }}
+        dropdownItem={{ color: 'warning' }}
       />
     </div>
   );

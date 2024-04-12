@@ -14,7 +14,6 @@ interface Props {
 }
 
 export const Button: React.FC<Props> = ({ children, ...attributes }) => {
-  console.log(attributes);
   return (
     <>
       <ButtonUI {...attributes}>{children}</ButtonUI>

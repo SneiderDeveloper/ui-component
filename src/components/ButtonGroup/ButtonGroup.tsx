@@ -1,22 +1,48 @@
-'use client'
+import React from "react";
+import { Button, ButtonGroup } from "@nextui-org/react";
+import { ChevronDownIcon } from "./ChevronDownIcon";
+import { Dropdown } from "@/components/Dropdown/Dropdown";
 
-import { ButtonGroup as ButtonGroupContainer} from "@nextui-org/button";
-import { Button } from '@/components/Button/Button'
-
-export const ButtonGroup = ({
-    buttonList,
-})=>{
-    return (
-        <ButtonGroupContainer>
-            {
-            buttonList.map(({attributes, children}) => (
-                <Button
-                 attributes={attributes}
-                >
-                    {children}
-                </Button>
-            ))
-            }
-        </ButtonGroupContainer>
-    )
+interface ButtonDropProps {
+  isDropdown: boolean;
+  listButtons: any[]; 
+  children: React.ReactNode;
 }
+
+const ButtonGroupUI: React.FC<ButtonDropProps> = ({
+  children,
+  isDropdown,
+  listButtons,
+}) => {
+  return (
+    <>
+      {isDropdown ? (
+        <>
+        <Button>{children}</Button>
+        <Dropdown
+          dropdown={{ placement: "bottom-end" }}
+          dropdownMenu={{
+            disallowEmptySelection: true,
+            className: "max-w-[300px]",
+            selectionMode: "single",
+          }}
+          title={<Button><ChevronDownIcon/></Button>}
+          sections={listButtons}
+        />
+        </>
+      ) : (
+        <>
+        {listButtons.map((atr) => (
+          <ButtonGroup>
+            {atr.items.map((button) => (
+              <Button>{button.label}</Button>
+            ))}
+          </ButtonGroup>
+        ))}
+        </>
+      )}
+    </>
+  );
+};
+
+export default ButtonGroupUI;
