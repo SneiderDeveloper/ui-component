@@ -40,6 +40,10 @@ export default function RootLayout({
       label: 'ButtonGroup',
       route: '/buttonGroup',
     },
+    {
+      label: 'Avatar',
+      route: '/avatar'
+    },
   ];
 
   return (

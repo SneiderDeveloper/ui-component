@@ -1,4 +1,3 @@
-import React from "react";
 import { Button, ButtonGroup } from "@nextui-org/react";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { Dropdown } from "@/components/Dropdown/Dropdown";

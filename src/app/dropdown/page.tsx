@@ -303,35 +303,6 @@ export default function DropdownPage() {
     },
   ];
 
-  const itemsSeven = [
-    {
-      items: [
-        {
-          label: 'Create a merge commit',
-          description:
-            'All commits from the source branch are added to the destination branch via a merge commit.',
-          shortcut: ' ✓',
-        },
-
-        {
-          label: 'Squash and merge'',
-          description:
-            'All commits from the source branch are added to the destination branch as a single commit.',
-          shortcut: ' ✓',
-        },
-
-        {
-          label: 'Rebase and merge',
-          description:
-            'All commits from the source branch are added to the destination branch individually.',
-          shortcut: ' ✓',
-        },
-      ],
-    },
-  ];
-
- 
-
   return (
     <div className='flex gap-2'>
       <Dropdown
@@ -377,14 +348,6 @@ export default function DropdownPage() {
         sections={itemsSix}
         dropdownItem={{ color: 'warning' }}
         dropdownMenu={{ variant: 'shadow' }}
-      />
-
-      <Dropdown
-        size='small'
-        title='DropExample'
-        sections={itemsSeven}
-        dropdownMenu={{ variant: 'bordered' }}
-        dropdownItem={{ color: 'warning' }}
       />
     </div>
   );
