@@ -1,6 +1,5 @@
 import type { Config } from 'tailwindcss'
 import { nextui } from '@nextui-org/theme'
-
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -14,6 +13,8 @@ const config: Config = {
     './node_modules/@nextui-org/theme/dist/components/dropdown.js',
     './node_modules/@nextui-org/theme/dist/components/avatar.js',
     './node_modules/@nextui-org/theme/dist/components/user.js',
+    './node_modules/@nextui-org/theme/dist/components/button.js',
+
   ],
   theme: {
     extend: {},

@@ -1,4 +1,4 @@
-'use client '
+'use client ';
 
 import React, { FC, SVGProps } from "react";
 
@@ -22,7 +22,7 @@ export const ChevronDown: FC<ChevronDownProps> = ({
       width={size}
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      style={{ transform: `rotate(${rotate}deg)`, transition: 'transform 0.3s ease' }}
+      style={{ transform: `rotate(${rotate}deg)`, transition: 'transform 0.3s ease',    }}
     >
       <path
         d="m19.92 8.95-6.52 6.52c-.77.77-2.03.77-2.8 0L4.08 8.95"
