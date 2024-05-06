@@ -33,6 +33,10 @@ export default function RootLayout({
         label: 'Search',
         route: '/search'
     },
+    {
+      label: 'Avatar',
+      route: '/avatar'
+  },
   ];
 
   return (
